@@ -1,8 +1,10 @@
 package page;
 
+import driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,8 +44,10 @@ public class EmailYourEstimateForm extends AbstractPage {
     }
 
     public ReceivedEmailPage sendEmail() {
-        driver.switchTo().frame(firstFrame);
-        driver.switchTo().frame(myFrame);
+        if (driver.getClass() != FirefoxDriver.class) {
+            driver.switchTo().frame(firstFrame);
+            driver.switchTo().frame(myFrame);
+        }
         WebElement emailField = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(emailFieldBy));
         emailField.sendKeys(email);
