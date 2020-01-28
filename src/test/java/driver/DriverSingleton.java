@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverSingleton {
     private static WebDriver driver;
@@ -13,10 +14,13 @@ public class DriverSingleton {
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            switch (System.getProperty("browser", "chrome")) {
+            switch (System.getProperty("browser", "firefox")) {
                 case "firefox": {
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.addArguments("--headless");
+                    driver = new FirefoxDriver(firefoxOptions);
+                    //driver = new FirefoxDriver();
                     break;
                 }
                 default: {
