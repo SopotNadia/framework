@@ -14,7 +14,7 @@ public class EmailYourEstimateForm extends AbstractPage {
     private final String TEN_MINUTEMAIL_PAGE = " https://10minutemail.com";
     private String email;
     private By emailFieldBy = By.xpath("//label[text()='Email ']/following-sibling::input");
-    private By sendEmailBy = By.xpath("//button[@aria-label='Send Email']");
+    private By sendEmailBy = By.xpath("//button[@aria-label='Send Emai']");
 
     @FindBy(xpath = "//b[@class='ng-binding']")
     private WebElement totalEstimatedCostElement;
