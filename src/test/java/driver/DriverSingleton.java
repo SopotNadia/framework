@@ -16,7 +16,7 @@ public class DriverSingleton {
         if (driver == null) {
             switch (System.getProperty("browser", "firefox")) {
                 case "firefox": {
-                    System.setProperty("webdriver.gecko.driver", "C:/gecko/geckodriver.exe");
+                    System.setProperty("webdriver.gecko.driver", "C:\\gecko\\geckodriver.exe");
                     driver = new FirefoxDriver();
                     break;
                 }
