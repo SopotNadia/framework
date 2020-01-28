@@ -2,6 +2,7 @@ package test;
 
 import driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import util.TestListener;
@@ -15,8 +16,8 @@ public class CommonConditions {
         driver = DriverSingleton.getDriver();
     }
 
-//    @AfterTest
-//    public void stopBrowser() {
-//        DriverSingleton.closeDriver();
-//    }
+    @AfterTest
+    public void stopBrowser() {
+        DriverSingleton.closeDriver();
+    }
 }

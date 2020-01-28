@@ -25,13 +25,13 @@ public class PricingCalculatorPage extends AbstractPage {
     public PricingCalculatorPage fillInFields(TestModel testModel) {
         new InstancesNumber().fillInNumberOfInstances(testModel.getNumberOfInstances());
         new InstanceType().selectInstanceType(testModel.getMachineType());
-        GPUs currentGPUs = new GPUs();
+        GPUs currentGPUs = new GPUs(testModel);
         currentGPUs.clickCheckBoxAddGPUs();
         currentGPUs.selectNumberOfGPUs();
         currentGPUs.selectGPUType();
-        new LocalSSD().selectLocalSSD();
+        new LocalSSD().selectLocalSSD(testModel.getLocalSSD());
         new DatacenterLocation().selectDatacenterLocation();
-        new CommittedUsage().selectCommittedUsage();
+        new CommittedUsage().selectCommittedUsage(testModel.getCommittedUsage());
         logger.info("All calculator fields filled in");
         expectedResult = testModel.getExpectedResult();
         return this;

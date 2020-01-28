@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import page.AbstractPage;
 
 public class LocalSSD extends AbstractPage {
-    private By localSSDBy = By.xpath("//*[contains(text(),'2x375')]");
     private By GPUTypeNvidiaBy = By.xpath("//div[contains(text(),'NVIDIA Tesla T4')]");
 
     @FindBy(xpath = "//label[contains(text(),'Local SSD')]/following-sibling::md-select")
@@ -21,10 +20,11 @@ public class LocalSSD extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public LocalSSD selectLocalSSD() {
+    public LocalSSD selectLocalSSD(String value) {
         new WebDriverWait(driver, 5).
                 until(ExpectedConditions.invisibilityOfElementLocated(GPUTypeNvidiaBy));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", localSSDContainer);
+        By localSSDBy = By.xpath(String.format("//*[contains(text(),'%s')]", value));
         WebElement localSSD = new WebDriverWait(driver, 5).
                 until(ExpectedConditions.visibilityOfElementLocated(localSSDBy));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", localSSD);
