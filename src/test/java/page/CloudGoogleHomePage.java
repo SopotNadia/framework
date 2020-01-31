@@ -21,7 +21,7 @@ public class CloudGoogleHomePage extends AbstractPage {
     }
 
     public CloudGoogleHomePage open() {
-        driver.get(HOMEPAGE_URL);
+        driver.navigate().to(HOMEPAGE_URL);
         WebElement searchButton = new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.visibilityOfElementLocated(searchButtonBy));
         logger.info("Opened site (" + HOMEPAGE_URL + ")");
